@@ -10,6 +10,8 @@ interface VerbProps {
 const ConjugateCard: React.FC<VerbProps> = (props) => {
     
     /* TODO => Randomly generate indexes */
+    console.log(props.verb.moods[0].tenses.length)
+    console.log(props.verb.moods[0].tenses[0].forms.length)
 
     const [moodIndex, setMoodIndex] = useState(0)
     const [tenseIndex, setTenseIndex] = useState(0)
