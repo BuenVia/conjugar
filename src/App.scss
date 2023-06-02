@@ -11,7 +11,7 @@ body {
 
 .card-container {
   width: 600px;
-  height: 800px;
+  min-height: 800px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -81,5 +81,20 @@ body {
       background-color: rgba(84, 180, 84, 0.9);
       color: whitesmoke;
     }
+  }
+}
+
+.list-container {
+  width: 500px;
+  margin: 1em;
+  padding: 1em;
+  background-color: #333333;
+
+  .list-mood-container {
+    padding: 1em;
+  }
+
+  .list-form-container {
+    padding: .5em;
   }
 }

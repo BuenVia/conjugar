@@ -11,7 +11,7 @@ body {
 
 .card-container {
   width: 600px;
-  height: 800px;
+  min-height: 800px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -82,4 +82,17 @@ body {
   transition: 150ms;
   background-color: rgba(84, 180, 84, 0.9);
   color: whitesmoke;
+}
+
+.list-container {
+  width: 500px;
+  margin: 1em;
+  padding: 1em;
+  background-color: #333333;
+}
+.list-container .list-mood-container {
+  padding: 1em;
+}
+.list-container .list-form-container {
+  padding: 0.5em;
 }/*# sourceMappingURL=App.css.map */
