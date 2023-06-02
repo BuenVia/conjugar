@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { verbs } from './flashcard.model';
 import './App.css';
+import ConjugateCard from './components/ConjugateCard';
 
-function App() {
+const App: React.FC = () => {
+
+  const [verbIndex, setVerbIndex] = useState(0)
+  const [verb, setVerb] = useState(verbs[verbIndex])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>Conjugate</h1>
       </header>
+      <main>
+        <ConjugateCard verb={verb} />
+      </main>
     </div>
   );
 }

@@ -1,38 +1,85 @@
-.App {
-  text-align: center;
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: sans-serif;
+  color: whitesmoke;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card-container {
+  width: 600px;
+  height: 800px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(21, 21, 24);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.verb-container {
+  width: 500px;
+  margin: 1em;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #333333;
+}
+.verb-container p, .verb-container h3 {
+  margin: 0.5em 0;
+}
+
+.conjugation-container {
+  width: 500px;
+  margin: 1em;
+  padding: 1em;
+  background-color: #333333;
+}
+.conjugation-container .details-container {
+  margin: 0.5em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.conjugation-container .details-container p {
+  padding: 0.25em;
+  background-color: orange;
+  color: #333333;
+  border-radius: 6px;
+}
+.conjugation-container .user-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.conjugation-container .user-form input {
+  width: 80%;
+  margin: 1em;
+  padding: 0.5em;
+  border: none;
+  border-bottom: 1px solid whitesmoke;
+  background-color: transparent;
+  color: whitesmoke;
+  font-size: 20px;
+  text-align: center;
+  outline: none;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.conjugation-container .user-form button {
+  padding: 0.5em;
+  width: 100px;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
 }
+.conjugation-container .user-form button:hover {
+  transition: 150ms;
+  background-color: rgba(84, 180, 84, 0.9);
+  color: whitesmoke;
+}/*# sourceMappingURL=App.css.map */
