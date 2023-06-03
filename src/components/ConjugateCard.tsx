@@ -3,6 +3,8 @@ import { Verb } from "../flashcard.model";
 
 interface VerbProps {
     verb: Verb
+    infinitive: string
+    translation: string
     nextQuestionHandler: () => void
 }
 
@@ -19,6 +21,7 @@ const ConjugateCard: React.FC<VerbProps> = (props) => {
         const answer = props.verb.spanish
         if (userAnswer === answer) {
             props.nextQuestionHandler()
+            setUserAnswer("")
         } else {
             console.log(false);
         }
@@ -28,8 +31,8 @@ const ConjugateCard: React.FC<VerbProps> = (props) => {
         <div className="card-container">
 
             <div className="verb-container">
-                <p>{props.verb.translation}</p>
-                <h3>{props.verb.infinitive}</h3>
+                <p>{props.translation}</p>
+                <h3>{props.infinitive}</h3>
             </div>
             
             <div className="conjugation-container">
@@ -67,7 +70,7 @@ const ConjugateCard: React.FC<VerbProps> = (props) => {
                     )
                 })}
             </div> */}
-            
+
         </div>
     )
 }
