@@ -63,8 +63,10 @@ const ConjugateCard: React.FC<VerbProps> = (props) => {
             
             <div className="conjugation-container">
                 <div className="details-container">
-                    <p>{props.verb.mood}</p>
-                    <p>{props.verb.tense}</p>
+                    <div>
+                        <span className='mood'>{props.verb.mood}</span>
+                        <span className='tense'>{props.verb.tense}</span>
+                    </div>
                     <h3>{props.verb.pronoun}</h3>
                 </div>
                 <form className="user-form" onSubmit={e => submitHandler(e)}>

@@ -20,16 +20,16 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header>
-        <h1>Conjugate</h1>
+        <h1>Conjug-8</h1>
       </header>
-      <main>
+
         <ConjugateCard 
           infinitive={verbList[verbIndex].infinitive}
           translation={verbList[verbIndex].translation}
           verb={verbList[verbIndex].conjugations[conjugationIndex]} 
           nextQuestionHandler={nextQuestionHandler} 
         />
-      </main>
+
     </div>
   );
 }
