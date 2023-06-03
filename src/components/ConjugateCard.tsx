@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Verb } from "../flashcard.model";
 
 interface VerbProps {
@@ -9,13 +9,12 @@ interface VerbProps {
 }
 
 
-const ConjugateCard: React.FC<VerbProps> = (props) => {
-    console.log(props);
-    
+const ConjugateCard: React.FC<VerbProps> = (props) => {    
  
     const [userAnswer, setUserAnswer] = useState<string>("")
+    const [wrongChar, setWrongChar] = useState(false)
+    const [showBtn, setShowBtn] = useState(false)
  
-
     const submitHandler = (e: React.FormEvent) => {
         e.preventDefault()
         const answer = props.verb.spanish
@@ -26,6 +25,33 @@ const ConjugateCard: React.FC<VerbProps> = (props) => {
             console.log(false);
         }
     }
+
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value
+        setUserAnswer(value) 
+    }
+
+    const checkAnswer = () => {
+        const ansSplit = props.verb.spanish.split("")
+        const valSplit = userAnswer.split("")
+        console.log(ansSplit);
+        console.log(valSplit);
+        if (valSplit[valSplit.length - 1] !== ansSplit[valSplit.length - 1]) {
+            console.log(`${valSplit[valSplit.length - 1]} should be ${ansSplit[valSplit.length - 1]}`);
+            setWrongChar(true)
+        } else {
+            setWrongChar(false)
+        }
+    }
+
+    const showBtnHandler = () => {
+        setShowBtn(userAnswer.length === props.verb.spanish.length && wrongChar === false ? true : false)
+    }
+
+    useEffect(() => {
+        checkAnswer()
+        showBtnHandler()
+    }, [changeHandler])
 
     return (
         <div className="card-container">
@@ -42,8 +68,8 @@ const ConjugateCard: React.FC<VerbProps> = (props) => {
                     <h3>{props.verb.pronoun}</h3>
                 </div>
                 <form className="user-form" onSubmit={e => submitHandler(e)}>
-                    <input type="text" name="userAnsInput" onChange={e => setUserAnswer(e.target.value)} value={userAnswer} />
-                    <button type="submit">Go</button>
+                    <input type="text" name="userAnsInput" onChange={e => changeHandler(e)} style={wrongChar ? {color: 'red'} : {color: 'whitesmoke'}} value={userAnswer} />
+                    {showBtn && <button type="submit">Go</button>}
                 </form>
             </div>
             
