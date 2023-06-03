@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Verb } from "../flashcard.model";
 
 interface VerbProps {
@@ -8,52 +8,43 @@ interface VerbProps {
 
 
 const ConjugateCard: React.FC<VerbProps> = (props) => {
+    console.log(props);
     
-    /* TODO => Randomly generate indexes */
-    console.log(props.verb.moods[0].tenses.length)
-    console.log(props.verb.moods[0].tenses[0].forms.length)
-
-    const [moodIndex, setMoodIndex] = useState(0)
-    const [tenseIndex, setTenseIndex] = useState(0)
-    const [formIndex, setFormIndex] = useState(0)
-    const [userAns, setUserAns] = useState("")
-
-    const changeHandler = (e: React.FormEvent) => {
-        const ans = e.target as HTMLInputElement
-        setUserAns(ans.value)
-    }
+ 
+    const [userAnswer, setUserAnswer] = useState<string>("")
+ 
 
     const submitHandler = (e: React.FormEvent) => {
         e.preventDefault()
-        const answer = props.verb.moods[moodIndex].tenses[tenseIndex].forms[formIndex].spanish
-        if (userAns === answer) {
+        const answer = props.verb.spanish
+        if (userAnswer === answer) {
             props.nextQuestionHandler()
         } else {
             console.log(false);
         }
     }
-    
+
     return (
         <div className="card-container">
 
             <div className="verb-container">
                 <p>{props.verb.translation}</p>
-                <h3>{props.verb.infinitve}</h3>
+                <h3>{props.verb.infinitive}</h3>
             </div>
             
             <div className="conjugation-container">
                 <div className="details-container">
-                    <p>{props.verb.moods[moodIndex].mood}</p>
-                    <p>{props.verb.moods[moodIndex].tenses[tenseIndex].tense}</p>
-                    <h3>{props.verb.moods[moodIndex].tenses[tenseIndex].forms[formIndex].pronoun}</h3>
+                    <p>{props.verb.mood}</p>
+                    <p>{props.verb.tense}</p>
+                    <h3>{props.verb.pronoun}</h3>
                 </div>
-                <form className="user-form" onSubmit={submitHandler}>
-                    <input type="text" name='userAnswer' onChange={changeHandler} value={userAns} />
+                <form className="user-form" onSubmit={e => submitHandler(e)}>
+                    <input type="text" name="userAnsInput" onChange={e => setUserAnswer(e.target.value)} value={userAnswer} />
                     <button type="submit">Go</button>
                 </form>
             </div>
             
-            <div className="list-container">
+            {/* <div className="list-container">
                 {props.verb.moods.map(mood => {
                     return (
                         <div>
@@ -75,7 +66,8 @@ const ConjugateCard: React.FC<VerbProps> = (props) => {
                         </div>
                     )
                 })}
-            </div>
+            </div> */}
+            
         </div>
     )
 }
