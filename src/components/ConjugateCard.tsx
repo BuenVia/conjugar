@@ -1,8 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Verb } from "../flashcard.model";
 
 interface VerbProps {
     verb: Verb
+    conjugationList: Verb[]
     infinitive: string
     translation: string
     nextQuestionHandler: () => void
@@ -34,8 +35,8 @@ const ConjugateCard: React.FC<VerbProps> = (props) => {
     const checkAnswer = () => {
         const ansSplit = props.verb.spanish.split("")
         const valSplit = userAnswer.split("")
-        console.log(ansSplit);
-        console.log(valSplit);
+        // console.log(ansSplit);
+        // console.log(valSplit);
         if (valSplit[valSplit.length - 1] !== ansSplit[valSplit.length - 1]) {
             console.log(`${valSplit[valSplit.length - 1]} should be ${ansSplit[valSplit.length - 1]}`);
             setWrongChar(true)
@@ -51,7 +52,17 @@ const ConjugateCard: React.FC<VerbProps> = (props) => {
     useEffect(() => {
         checkAnswer()
         showBtnHandler()
-    }, [changeHandler])
+    }, [userAnswer])
+
+    const findAllVerbs = () => {
+        let unique = [...new Set(props.conjugationList.map(verb => verb.mood))]
+        for (let i = 0; i < unique.length; i++) {
+            let newList = props.conjugationList.filter((val) => val.mood === unique[i])
+            console.log(newList)        
+        }
+    }
+
+    findAllVerbs()
 
     return (
         <div className="card-container">
@@ -71,33 +82,22 @@ const ConjugateCard: React.FC<VerbProps> = (props) => {
                 </div>
                 <form className="user-form" onSubmit={e => submitHandler(e)}>
                     <input type="text" name="userAnsInput" onChange={e => changeHandler(e)} style={wrongChar ? {color: 'red'} : {color: 'whitesmoke'}} value={userAnswer} />
-                    {showBtn && <button type="submit">Go</button>}
+                    <button type="submit" className={showBtn ? 'submit-btn' : 'submit-btn-disabled'} disabled={showBtn ? false : true}>Go</button>
                 </form>
             </div>
             
-            {/* <div className="list-container">
-                {props.verb.moods.map(mood => {
-                    return (
-                        <div>
-                            <h3>{mood.mood}</h3>
-                            {mood.tenses.map(tense => {
-                                return (
-                                    <div className='list-mood-container'>
-                                        <h4>{tense.tense}</h4>
-                                        {tense.forms.map(form => {
-                                            return (
-                                                <div className='list-form-container'>
-                                                    <p>{form.pronoun} {form.spanish}: {form.engligh}</p>
-                                                </div>
-                                            )
-                                        })}
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    )
+            <div className="list-container">
+                <h3>Indicativo</h3>
+                {props.conjugationList.map(verb => {
+                    if (verb.mood === "indicativo") {
+                        return (
+                            <div>
+                                <p style={{textAlign: 'right'}}>{verb.pronoun}</p>
+                            </div>
+                        )
+                    }
                 })}
-            </div> */}
+            </div>
 
         </div>
     )

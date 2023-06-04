@@ -28,6 +28,7 @@ const App: React.FC = () => {
           translation={verbList[verbIndex].translation}
           verb={verbList[verbIndex].conjugations[conjugationIndex]} 
           nextQuestionHandler={nextQuestionHandler} 
+          conjugationList={verbList[verbIndex].conjugations}
         />
 
     </div>

@@ -83,17 +83,26 @@ header {
       text-align: center;
       outline: none; 
     }
-    button {
+    .submit-btn {
       padding: .5em;
       width: 100px;
       border: none;
       border-radius: .5em;
+      background-color: rgba(84, 180, 84, 0.7);
+      color: whitesmoke;
       cursor: pointer;
     }
-    button:hover {
+    .submit-btn:hover {
       transition: 150ms;
       background-color: rgba(84, 180, 84, 0.9);
-      color: whitesmoke;
+    }
+    .submit-btn-disabled {
+      padding: .5em;
+      width: 100px;
+      border: none;
+      border-radius: .5em;
+      background-color: rgba(255, 255, 255, 0.5);
+      color: rgba(0, 0, 0, 0.5);
     }
   }
 }
@@ -102,7 +111,7 @@ header {
   width: 500px;
   margin: 1em;
   padding: 1em;
-  background-color: #333333;
+  background-color: rgb(74, 74, 82);
 
   .list-mood-container {
     padding: 1em;

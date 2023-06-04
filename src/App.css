@@ -85,24 +85,33 @@ header {
   text-align: center;
   outline: none;
 }
-.conjugation-container .user-form button {
+.conjugation-container .user-form .submit-btn {
   padding: 0.5em;
   width: 100px;
   border: none;
   border-radius: 0.5em;
+  background-color: rgba(84, 180, 84, 0.7);
+  color: whitesmoke;
   cursor: pointer;
 }
-.conjugation-container .user-form button:hover {
+.conjugation-container .user-form .submit-btn:hover {
   transition: 150ms;
   background-color: rgba(84, 180, 84, 0.9);
-  color: whitesmoke;
+}
+.conjugation-container .user-form .submit-btn-disabled {
+  padding: 0.5em;
+  width: 100px;
+  border: none;
+  border-radius: 0.5em;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .list-container {
   width: 500px;
   margin: 1em;
   padding: 1em;
-  background-color: #333333;
+  background-color: rgb(74, 74, 82);
 }
 .list-container .list-mood-container {
   padding: 1em;
