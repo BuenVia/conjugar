@@ -55,10 +55,9 @@ const ConjugateCard: React.FC<VerbProps> = (props) => {
     }, [userAnswer])
 
     const findAllVerbs = () => {
-        let unique = [...new Set(props.conjugationList.map(verb => verb.mood))]
+        const unique = [...new Set(props.conjugationList.map(verb => verb.mood))]
         for (let i = 0; i < unique.length; i++) {
-            let newList = props.conjugationList.filter((val) => val.mood === unique[i])
-            console.log(newList)        
+            console.log(props.conjugationList.filter((val) => val.mood === unique[i]))  
         }
     }
 
@@ -85,7 +84,8 @@ const ConjugateCard: React.FC<VerbProps> = (props) => {
                     <button type="submit" className={showBtn ? 'submit-btn' : 'submit-btn-disabled'} disabled={showBtn ? false : true}>Go</button>
                 </form>
             </div>
-            
+
+           
             <div className="list-container">
                 <h3>Indicativo</h3>
                 {props.conjugationList.map(verb => {
