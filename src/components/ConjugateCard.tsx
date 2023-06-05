@@ -3,7 +3,6 @@ import { Verb } from "../flashcard.model";
 
 interface VerbProps {
     verb: Verb
-    conjugationList: Verb[]
     infinitive: string
     translation: string
     nextQuestionHandler: () => void
@@ -54,15 +53,6 @@ const ConjugateCard: React.FC<VerbProps> = (props) => {
         showBtnHandler()
     }, [userAnswer])
 
-    const findAllVerbs = () => {
-        const unique = [...new Set(props.conjugationList.map(verb => verb.mood))]
-        for (let i = 0; i < unique.length; i++) {
-            console.log(props.conjugationList.filter((val) => val.mood === unique[i]))  
-        }
-    }
-
-    findAllVerbs()
-
     return (
         <div className="card-container">
 
@@ -83,20 +73,6 @@ const ConjugateCard: React.FC<VerbProps> = (props) => {
                     <input type="text" name="userAnsInput" onChange={e => changeHandler(e)} style={wrongChar ? {color: 'red'} : {color: 'whitesmoke'}} value={userAnswer} />
                     <button type="submit" className={showBtn ? 'submit-btn' : 'submit-btn-disabled'} disabled={showBtn ? false : true}>Go</button>
                 </form>
-            </div>
-
-           
-            <div className="list-container">
-                <h3>Indicativo</h3>
-                {props.conjugationList.map(verb => {
-                    if (verb.mood === "indicativo") {
-                        return (
-                            <div>
-                                <p style={{textAlign: 'right'}}>{verb.pronoun}</p>
-                            </div>
-                        )
-                    }
-                })}
             </div>
 
         </div>

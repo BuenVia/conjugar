@@ -12,19 +12,23 @@ body {
 
 .App {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 header {
-  height: 7%;
+  width: 100%;
   background-color: rgb(74, 74, 82);
   padding: 0.5em;
+  position: absolute;
+  top: 0;
 }
 
 .card-container {
   width: 600px;
-  height: 93%;
-  min-height: 800px;
-  margin: auto;
+  margin: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -118,4 +122,17 @@ header {
 }
 .list-container .list-form-container {
   padding: 0.5em;
+}
+.list-container .conjugation-list-item {
+  display: flex;
+  flex-direction: row;
+}
+.list-container .conjugation-list-item .box-left {
+  padding: 0 1em;
+  width: 50%;
+  text-align: right;
+}
+.list-container .conjugation-list-item .box-right {
+  padding: 0 1em;
+  width: 50%;
 }/*# sourceMappingURL=App.css.map */

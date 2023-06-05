@@ -12,19 +12,23 @@ body {
 
 .App {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 header {
-  height: 7%;
+  width: 100%;
   background-color: rgb(74, 74, 82);
   padding: .5em;
+  position: absolute;
+  top: 0;
 }
 
 .card-container {
   width: 600px;
-  height: 93%;
-  min-height: 800px;
-  margin: auto;
+  margin: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -119,5 +123,18 @@ header {
 
   .list-form-container {
     padding: .5em;
+  }
+  .conjugation-list-item {
+    display: flex;
+    flex-direction: row;
+    .box-left {
+      padding: 0 1em;
+      width: 50%;
+      text-align: right;
+    }
+    .box-right {
+      padding: 0 1em;
+      width: 50%;
+    }
   }
 }

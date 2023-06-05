@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { verbList } from './flashcard.model';
 import './App.css';
 import ConjugateCard from './components/ConjugateCard';
+import VerbList from './components/VerbList';
 
 const App: React.FC = () => {
 
@@ -28,8 +29,8 @@ const App: React.FC = () => {
           translation={verbList[verbIndex].translation}
           verb={verbList[verbIndex].conjugations[conjugationIndex]} 
           nextQuestionHandler={nextQuestionHandler} 
-          conjugationList={verbList[verbIndex].conjugations}
         />
+        <VerbList conjugationList={verbList[verbIndex].conjugations} />
 
     </div>
   );

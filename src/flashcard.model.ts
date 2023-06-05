@@ -110,7 +110,6 @@ export const verbList = [
                 pronoun: "usted",
                 spanish: "sea",
                 english: "be",
-
                 mood: "imperativo",
                 tense: "afirmativo",
             },
@@ -118,7 +117,6 @@ export const verbList = [
                 pronoun: "nosotros/nosotras",
                 spanish: "seamos",
                 english: "let's be",
- 
                 mood: "imperativo",
                 tense: "afirmativo",
             },
@@ -126,7 +124,6 @@ export const verbList = [
                 pronoun: "ustedes",
                 spanish: "sean",
                 english: "be",
-
                 mood: "imperativo",
                 tense: "afirmativo",
             },
@@ -134,7 +131,6 @@ export const verbList = [
                 pronoun: "yo",
                 spanish: "sea",
                 english: "be",
-
                 mood: "subjuntivo",
                 tense: "presente",
             },
