@@ -3,48 +3,58 @@ import { Verb } from "../flashcard.model"
 import ListItem from "./ListItem"
 
 interface VerbListProps {
-    conjugationList: Verb[]
+    verb: Verb
 }
 
 const VerbList: React.FC<VerbListProps> = (props) => {
 
-    const uniqueMoods = [...new Set(props.conjugationList.map(verb => verb.mood))]
-    const uniqueTenses = [...new Set(props.conjugationList.map(verb => verb.tense))]
-    const [zedArr, setZedArr] = useState<any[]>([])
+    console.log(props);
+    
+
+    // const uniqueMoods = [...new Set(props.conjugationList.map(verb => verb.mood))]
+    // const uniqueTenses = [...new Set(props.conjugationList.map(verb => verb.tense))]
+
 
     const showConjugations = () => {
-        for (let i = 0; i < uniqueMoods.length; i++) {
-            const x = props.conjugationList.filter(val => {
-                return val.mood === uniqueMoods[i]
-            })
-            for (let i = 0; i < uniqueTenses.length; i++) {
-                const y = x.filter(val => {
-                    return val.tense === uniqueTenses[i]
-                })
-                if (y.length > 0) {
-                    setZedArr(prevVals => {
-                        return [...prevVals, y]
-                    })
-                }
-            }
-        }
+        // for (let i = 0; i < uniqueMoods.length; i++) {
+        //     const x = props.conjugationList.filter(val => {
+        //         return val.mood === uniqueMoods[i]
+        //     })
+        //     for (let i = 0; i < uniqueTenses.length; i++) {
+        //         const y = x.filter(val => {
+        //             return val.tense === uniqueTenses[i]
+        //         })
+        //         if (y.length > 0) {
+        //             setZedArr(prevVals => {
+        //                 return [...prevVals, y]
+        //             })
+        //         }
+        //     }
+        // }
     }
 
     useEffect(() => {
         showConjugations()
     }, [])
 
-    console.log(zedArr);
+
     
 
     return (
         <div>
+
+            {props.verb.moods.map(verb => {
+                return (
+                    <div className="list-container">
+                        <h2>{verb.mood}</h2>
+                        <p>{verb.tenses.map(tense => {
+                            return (<p>{tense.tense}</p>)
+                        })}</p>
+                    </div>
+                )
+            })}
             
-            {zedArr.map(z => {
-                        return <p>{z.pronoun}</p>
-                    })}
-            
-            {uniqueMoods.map((mood) => {
+            {/* {uniqueMoods.map((mood) => {
             return (
                 <div className="list-container">
                 <h2>{mood}</h2>
@@ -62,7 +72,8 @@ const VerbList: React.FC<VerbListProps> = (props) => {
                 })}
             </div>
             )
-        })}</div>
+        })} */}
+        </div>
     )
 }
 

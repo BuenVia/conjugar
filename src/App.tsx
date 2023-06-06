@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { verbList } from './flashcard.model';
+import { verbs } from './flashcard.model';
 import './App.css';
 import ConjugateCard from './components/ConjugateCard';
 import VerbList from './components/VerbList';
 
 const App: React.FC = () => {
 
-  const [verbIndex, setVerbIndex] = useState(0)
-  const [conjugationIndex, setConjugationIndex] = useState(0)
+  const [verbIndex, setVerbIndex] = useState(Math.floor(Math.random() * verbs.length))
+  // const [conjugationIndex, setConjugationIndex] = useState(0)
 
   const nextQuestionHandler = () => {
-    setVerbIndex(Math.floor(Math.random() * verbList.length))
-    setConjugationIndex(Math.floor(Math.random() * verbList[verbIndex].conjugations.length))
+    setVerbIndex(Math.floor(Math.random() * verbs.length))
+    // setConjugationIndex(Math.floor(Math.random() * verbs[verbIndex].conjugations.length))
   }
 
   useEffect(() => {
@@ -25,12 +25,12 @@ const App: React.FC = () => {
       </header>
 
         <ConjugateCard 
-          infinitive={verbList[verbIndex].infinitive}
-          translation={verbList[verbIndex].translation}
-          verb={verbList[verbIndex].conjugations[conjugationIndex]} 
+          // infinitive={verbs[verbIndex].infinitive}
+          // translation={verbs[verbIndex].translation}
+          verb={verbs[verbIndex]} 
           nextQuestionHandler={nextQuestionHandler} 
         />
-        <VerbList conjugationList={verbList[verbIndex].conjugations} />
+        <VerbList verb={verbs[verbIndex]} />
 
     </div>
   );
